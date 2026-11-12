@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import { MobileNavDrawer } from "./MobileNavDrawer";
 
 export function Navbar() {
   return (
@@ -23,31 +24,35 @@ export function Navbar() {
           <span className="text-g-red text-xl ml-0.5">.</span>
         </Link>
 
-        {/* Nav Links Khas Google Workspace */}
-        <nav className="flex items-center gap-1.5 sm:gap-3">
-          <Link
-            href="/#about"
-            className="px-3.5 py-2 text-sm font-semibold rounded-pill text-g-text-muted hover:text-g-text-main hover:bg-g-bg-secondary transition-colors"
-          >
-            About
-          </Link>
-          <Link
-            href="/projects"
-            className="px-3.5 py-2 text-sm font-semibold rounded-pill text-g-text-muted hover:text-g-text-main hover:bg-g-bg-secondary transition-colors"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/contact"
-            className="px-5 py-2 text-sm font-bold rounded-pill bg-g-blue hover:bg-g-blue-hover text-white transition-all shadow-google hover:shadow-google-hover active:scale-95"
-          >
-            Contact
-          </Link>
+        {/* Desktop Nav Links */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <nav className="hidden md:flex items-center gap-2">
+            <Link
+              href="/#about"
+              className="px-3.5 py-2 text-sm font-semibold rounded-pill text-g-text-muted hover:text-g-text-main hover:bg-g-bg-secondary transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="/projects"
+              className="px-3.5 py-2 text-sm font-semibold rounded-pill text-g-text-muted hover:text-g-text-main hover:bg-g-bg-secondary transition-colors"
+            >
+              Projects
+            </Link>
+            <Link
+              href="/contact"
+              className="px-5 py-2 text-sm font-bold rounded-pill bg-g-blue hover:bg-g-blue-hover text-white transition-all shadow-google hover:shadow-google-hover active:scale-95"
+            >
+              Contact
+            </Link>
+          </nav>
 
-          <div className="ml-1 pl-2 border-l border-g-subtle flex items-center">
+          <div className="md:ml-1 md:pl-3 md:border-l md:border-g-subtle flex items-center gap-2">
             <ThemeToggle />
+            <MobileNavDrawer />
           </div>
-        </nav>
+        </div>
+
       </div>
     </header>
   );
