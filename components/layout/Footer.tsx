@@ -17,7 +17,7 @@ export function Footer() {
           <span className="inline-block w-1 h-1 rounded-full bg-g-subtle" />
           <span>Next.js + TypeScript + Tailwind</span>
         </div>
-        <p>© {year} Personal Portfolio. All rights reserved.</p>
+        <p>© {year} Gerald. All rights reserved.</p>
       </div>
     </footer>
   );

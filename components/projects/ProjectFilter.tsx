@@ -6,10 +6,9 @@ import { ProjectCategory } from "@/schemas/project.schema";
 
 const categories: { label: string; value: ProjectCategory }[] = [
   { label: "Semua", value: "all" },
-  { label: "Web", value: "web" },
-  { label: "Backend", value: "backend" },
   { label: "Fullstack", value: "fullstack" },
-  { label: "Tools", value: "tools" },
+  { label: "Web & Interactive", value: "web" },
+  { label: "Desktop & System", value: "desktop" },
 ];
 
 export function ProjectFilter() {
