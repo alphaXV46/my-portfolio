@@ -1,26 +1,43 @@
-import { Metadata } from "next";
-import { projectsData } from "@/data/projects";
+import { Suspense } from "react";
+import { fetchAllProjects } from "@/services/project.service";
 import { ProjectCatalog } from "@/components/projects/ProjectCatalog";
 
-export const metadata: Metadata = {
-  title: "Projects | Personal Portfolio",
-  description: "Daftar studi kasus rekayasa perangkat lunak, sistem backend, dan aplikasi web.",
-};
+async function ProjectsListSection() {
+  const projects = await fetchAllProjects();
+  return <ProjectCatalog initialProjects={projects} />;
+}
+
+function ProjectsSkeleton() {
+  return (
+    <div className="space-y-6 animate-pulse">
+      <div className="h-12 max-w-xl mx-auto rounded-pill bg-g-bg-secondary/60" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[1, 2, 3, 4].map((i) => (
+          <div
+            key={i}
+            className="h-64 rounded-google border border-g-subtle bg-g-bg-secondary/60"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ProjectsPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-      {/* Page Title ala Google Clean Style */}
-      <div className="mb-10 text-center sm:text-left">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <div>
         <h1 className="text-3xl sm:text-4xl font-black text-g-text-main tracking-tight">
-          Featured Projects
+          Projects Archive
         </h1>
-        <p className="text-sm sm:text-base text-g-text-muted mt-2 max-w-2xl">
-          Eksplorasi teknis dan arsitektur perangkat lunak yang pernah saya bangun, mulai dari backend engine berlatensi rendah hingga web interaktif modern.
+        <p className="text-sm text-g-text-muted mt-2">
+          Eksplorasi studi kasus sistem web, desktop, dan integrasi API yang pernah dibangun.
         </p>
       </div>
 
-      <ProjectCatalog initialProjects={projectsData} />
+      <Suspense fallback={<ProjectsSkeleton />}>
+        <ProjectsListSection />
+      </Suspense>
     </div>
   );
 }

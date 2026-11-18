@@ -18,9 +18,9 @@ export const ProjectSchema = z.object({
   category: z.enum(["fullstack", "web", "desktop"]),
   tags: z.array(z.string()).nonempty("Minimal satu tag diperlukan"),
   featured: z.boolean().default(false),
-  githubUrl: z.string().url().optional(),
-  liveUrl: z.string().url().optional(),
-  stats: z.string().optional(),
+  githubUrl: z.string().url().nullish(),
+  liveUrl: z.string().url().nullish(),
+  stats: z.string().nullish(),
   publishedAt: z.string(),
 });
 
