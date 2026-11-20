@@ -3,6 +3,7 @@ import { THEME_COOKIE_NAME } from "@/lib/cookies";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
+import { FloatingChatWidget } from "@/components/chat/FloatingChatWidget";
 
 export const metadata: Metadata = {
   title: "Personal Portfolio",
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingChatWidget />
       </body>
     </html>
   );
